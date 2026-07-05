@@ -1,0 +1,62 @@
+const infoCards = [
+  {
+    icon: "🕓",
+    title: "Horario de atención",
+    body: (
+      <ul className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
+        <li className="flex justify-between py-0.5">
+          <span>Lun – Vie</span>
+          <span>9:00 am – 6:00 pm</span>
+        </li>
+        <li className="flex justify-between py-0.5">
+          <span>Sábado</span>
+          <span>9:00 am – 3:00 pm</span>
+        </li>
+        <li className="flex justify-between py-0.5">
+          <span>Domingo</span>
+          <span>Cerrado</span>
+        </li>
+      </ul>
+    ),
+  },
+  {
+    icon: "🚚",
+    title: "Entregas",
+    body: (
+      <p className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
+        Hacemos envíos dentro de San Miguel el mismo día si el pedido se hace
+        antes de las 11:00 am. Para otras zonas o pedidos grandes, coordinamos
+        por WhatsApp.
+      </p>
+    ),
+  },
+  {
+    icon: "⏳",
+    title: "Tiempo de anticipación",
+    body: (
+      <p className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
+        Postres individuales y cupcakes: mismo día. Tortas personalizadas:
+        mínimo 48 horas de anticipación.
+      </p>
+    ),
+  },
+];
+
+export function InfoSection() {
+  return (
+    <section className="mx-auto max-w-5xl px-5 pt-16 pb-5">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[18px]">
+        {infoCards.map((card) => (
+          <div
+            key={card.title}
+            className="rounded-2xl border border-heart-wine/15 bg-heart-pink-soft p-[26px]"
+          >
+            <span className="mb-2.5 block text-2xl">{card.icon}</span>
+            <h3 className="mb-2 text-xl text-heart-berry-dark">{card.title}</h3>
+            {card.body}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

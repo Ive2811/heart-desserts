@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --heart-bg-cream: #fbf4ef;
+  --heart-pink-blush: #f3c3d3;
+  --heart-pink-soft: #f8dce5;
+  --heart-wine: #3e1b26;
+  --heart-wine-soft: #6b3b49;
+  --heart-berry: #b23a52;
+  --heart-berry-dark: #8c2c40;
+  --heart-gold-cream: #eddcc0;
+  --heart-cream-card: #ffffff;
+  --heart-whatsapp: #25d366;
+  --heart-whatsapp-dark: #1da851;
+}
+
+/* Tokens expuestos como utilidades de Tailwind: bg-heart-wine, text-heart-berry, etc. */
+@theme inline {
+  --color-heart-bg-cream: var(--heart-bg-cream);
+  --color-heart-pink-blush: var(--heart-pink-blush);
+  --color-heart-pink-soft: var(--heart-pink-soft);
+  --color-heart-wine: var(--heart-wine);
+  --color-heart-wine-soft: var(--heart-wine-soft);
+  --color-heart-berry: var(--heart-berry);
+  --color-heart-berry-dark: var(--heart-berry-dark);
+  --color-heart-gold-cream: var(--heart-gold-cream);
+  --color-heart-cream-card: var(--heart-cream-card);
+  --color-heart-whatsapp: var(--heart-whatsapp);
+  --color-heart-whatsapp-dark: var(--heart-whatsapp-dark);
+
+  --font-display: var(--font-cormorant), serif;
+  --font-body: var(--font-jost), sans-serif;
+}
+
+body {
+  background: var(--heart-bg-cream);
+  color: var(--heart-wine);
+  font-family: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
