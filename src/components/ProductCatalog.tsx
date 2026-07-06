@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { CartState, Category, Product } from "@/lib/types";
 import { CategoryTabs } from "@/components/CategoryTabs";
+import { FadeIn } from "@/components/FadeIn";
 import { ProductCard } from "@/components/ProductCard";
 
 interface ProductCatalogProps {
@@ -45,14 +46,15 @@ export function ProductCatalog({
       />
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
-        {visibleProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            quantity={cart[product.id] ?? 0}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-          />
+        {visibleProducts.map((product, index) => (
+          <FadeIn key={product.id} delayMs={(index % 4) * 80}>
+            <ProductCard
+              product={product}
+              quantity={cart[product.id] ?? 0}
+              onIncrement={onIncrement}
+              onDecrement={onDecrement}
+            />
+          </FadeIn>
         ))}
       </div>
     </main>

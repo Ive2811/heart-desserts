@@ -1,8 +1,10 @@
 import { About } from "@/components/About";
+import { FadeIn } from "@/components/FadeIn";
 import { Footer } from "@/components/Footer";
 import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
 import { InfoSection } from "@/components/InfoSection";
+import { LocationSection } from "@/components/LocationSection";
 import { ShopExperience } from "@/components/ShopExperience";
 import { categories, products, testimonials } from "@/data/catalog";
 
@@ -15,9 +17,23 @@ export default function HomePage() {
     <div className="pb-24">
       <Hero />
       <ShopExperience products={products} categories={categories} />
-      <About testimonials={testimonials} />
-      <Gallery instagramUrl={INSTAGRAM_URL} />
-      <InfoSection />
+
+      <FadeIn>
+        <About testimonials={testimonials} />
+      </FadeIn>
+
+      <FadeIn>
+        <Gallery instagramUrl={INSTAGRAM_URL} />
+      </FadeIn>
+
+      <FadeIn>
+        <InfoSection />
+      </FadeIn>
+
+      <FadeIn>
+        <LocationSection />
+      </FadeIn>
+
       <Footer
         instagramHandle={INSTAGRAM_HANDLE}
         instagramUrl={INSTAGRAM_URL}
