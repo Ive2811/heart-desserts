@@ -59,10 +59,66 @@ Abre http://localhost:3000
 
 ## Variables de entorno
 
-Ver `.env.local.example`. Por ahora solo se usa:
+Ver `.env.local.example`. Por ahora se usa:
 
 - `NEXT_PUBLIC_WHATSAPP_NUMBER`: número de WhatsApp del negocio, formato
   internacional sin "+" ni espacios (ej. `50370000000`).
+- `NEXT_PUBLIC_BUSINESS_ADDRESS`: dirección para la sección "Encuéntranos".
+- `INSTAGRAM_ACCESS_TOKEN`: token para la galería (ver siguiente sección).
+
+## Galería de Instagram (paso a paso)
+
+La sección "Galería" trae automáticamente tus últimas publicaciones desde
+Instagram usando la **Instagram API with Instagram Login** (el reemplazo
+oficial de la vieja Basic Display API, retirada en diciembre 2024). No
+necesita marca de terceros ni página de Facebook — solo una cuenta
+profesional de Instagram.
+
+Si no configuras el token, la galería no se rompe: muestra automáticamente
+los placeholders de frutas hasta que lo agregues.
+
+### 1. Pasar tu cuenta a profesional
+
+En la app de Instagram: **Configuración → Cuenta → Cambiar a cuenta
+profesional** → elige **Creador** (no hace falta vincular página de
+Facebook).
+
+### 2. Crear la app en Meta for Developers
+
+1. Ve a [developers.facebook.com](https://developers.facebook.com) → **Mis
+   apps → Crear app** → tipo **Negocios**.
+2. Dentro de la app, en **Agregar producto**, busca **Instagram** → **Set
+   up** (Business Login for Instagram / API setup with Instagram login).
+
+### 3. Autorizar tu cuenta y generar el token
+
+1. En **Instagram → API setup with Instagram login**, sigue el flujo para
+   conectar tu cuenta de Instagram (te pedirá iniciar sesión y aceptar
+   permisos).
+2. Una vez conectada, la misma pantalla te deja **generar el token de
+   acceso** (access token). Cópialo.
+
+### 4. Ponerlo en el proyecto
+
+En `.env.local`:
+
+```
+INSTAGRAM_ACCESS_TOKEN=el_token_que_copiaste
+```
+
+En producción (Vercel): **Project Settings → Environment Variables**, agrega
+la misma variable ahí y vuelve a desplegar.
+
+### 5. Renovación (cada ~60 días)
+
+El token dura 60 días. Antes de que expire, vuelve a **Instagram → API
+setup with Instagram login** en el dashboard de Meta y presiona **Generate
+Token** de nuevo — reemplaza la variable de entorno con el nuevo valor.
+
+> Nota: cuando conectemos Supabase en la Fase 3, esto se puede automatizar
+> con un cron job que renueve el token solo y lo guarde en la base de
+> datos, para no tener que hacerlo a mano. Por ahora, con renovarlo cada
+> par de meses es suficiente.
 
 ## Roadmap
 

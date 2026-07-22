@@ -1,5 +1,7 @@
 "use client";
 
+import { WhatsappIcon } from "@/components/icons/WhatsappIcon";
+
 interface CartBarProps {
   totalItems: number;
   fixedTotal: number;
@@ -32,7 +34,7 @@ export function CartBar({ totalItems, fixedTotal, hasVariablePricing, onOrder }:
         onClick={onOrder}
         className="flex items-center gap-2 rounded-full bg-heart-whatsapp px-[22px] py-3 text-[0.85rem] font-medium whitespace-nowrap text-white transition-colors hover:bg-heart-whatsapp-dark"
       >
-        🟢 Pedir por WhatsApp
+        <WhatsappIcon className="h-4 w-4" /> Pedir por WhatsApp
       </button>
     </div>
   );
