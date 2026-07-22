@@ -1,91 +1,183 @@
 import type { Category, Product, Testimonial } from "@/lib/types";
 
 /**
- * Datos de ejemplo para desarrollo local.
- * En la Fase 3 esto se reemplaza por una consulta a Supabase
- * (ver src/lib/supabase/products.ts), sin tener que tocar
- * los componentes que consumen estos datos.
+ * Datos del catálogo. Los precios marcados como "tbd" (price: 0) están
+ * pendientes de confirmar — se ven en la tarjeta como "Precio a confirmar"
+ * y no se suman al total del carrito. En cuanto tengas la lista de precios,
+ * solo hay que cambiar priceType a "fixed" o "from" y poner el número real
+ * en cada producto de aquí abajo.
+ *
+ * En la Fase 3 este archivo se reemplaza por una consulta a Supabase, sin
+ * tener que tocar los componentes que lo consumen.
  */
 export const categories: Category[] = [
   { key: "todos", label: "Todos" },
-  { key: "cheesecakes", label: "Cheesecakes" },
   { key: "tortas", label: "Tortas" },
-  { key: "cupcakes", label: "Cupcakes" },
   { key: "individuales", label: "Individuales" },
+  { key: "cupcakes", label: "Cupcakes" },
+  { key: "crepas", label: "Crepas" },
+  { key: "cajas", label: "Cajas de regalo" },
 ];
 
 export const products: Product[] = [
+  // --- Tortas ---
   {
-    id: "1",
-    categoryKey: "cheesecakes",
-    name: "Cheesecake de Fresa",
-    description: "Base de galleta, relleno cremoso y fresas frescas.",
-    price: 8.5,
-    priceType: "fixed",
+    id: "torta-frutos-rojos",
+    categoryKey: "tortas",
+    name: "Cheesecake de Frutos Rojos",
+    description: "Base suave, crema chantilly y una corona de fresas, cerezas y arándanos frescos.",
+    price: 0,
+    priceType: "tbd",
     emoji: "🍓",
+    imageUrl: "/products/cheesecake-frutos-rojos.jpg",
   },
   {
-    id: "2",
-    categoryKey: "cheesecakes",
-    name: "Cheesecake de Nutella",
-    description: "Suave, intenso y con topping de chocolate.",
-    price: 9.0,
-    priceType: "fixed",
+    id: "torta-mermelada-moras",
+    categoryKey: "tortas",
+    name: "Cheesecake con Mermelada de Moras",
+    description: "Cubierta brillante de mermelada de moras con fresas, cerezas y arándanos alrededor.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🍒",
+    imageUrl: "/products/cheesecake-mermelada-moras.jpg",
+  },
+  {
+    id: "torta-chocolate-fresas",
+    categoryKey: "tortas",
+    name: "Cheesecake de Chocolate con Fresas",
+    description: "Espolvoreado de cacao con fresas frescas, un clásico elegante y no muy dulce.",
+    price: 0,
+    priceType: "tbd",
     emoji: "🍫",
+    imageUrl: "/products/cheesecake-chocolate-fresas.jpg",
   },
   {
-    id: "3",
+    id: "torta-tres-leches",
     categoryKey: "tortas",
-    name: "Torta Red Velvet",
-    description: "Clásica, húmeda, con frosting de queso crema. Tamaño y decoración a elegir.",
-    price: 15.0,
-    priceType: "from",
-    emoji: "🎂",
-  },
-  {
-    id: "4",
-    categoryKey: "tortas",
-    name: "Torta Tres Leches",
-    description: "Bizcocho esponjoso bañado en tres leches. Tamaño y decoración a elegir.",
-    price: 14.0,
-    priceType: "from",
+    name: "Pastel Tres Leches",
+    description: "Bizcocho húmedo bañado en tres leches, con crema batida y un toque de canela.",
+    price: 0,
+    priceType: "tbd",
     emoji: "🍰",
+    imageUrl: "/products/pastel-tres-leches.jpg",
   },
+
+  // --- Individuales ---
   {
-    id: "5",
-    categoryKey: "cupcakes",
-    name: "Cupcake Vainilla",
-    description: "Frosting suave de vainilla, individual.",
-    price: 2.25,
-    priceType: "fixed",
-    emoji: "🧁",
-  },
-  {
-    id: "6",
-    categoryKey: "cupcakes",
-    name: "Cupcake Red Velvet",
-    description: "Mini versión de nuestra torta favorita.",
-    price: 2.5,
-    priceType: "fixed",
-    emoji: "🧁",
-  },
-  {
-    id: "7",
+    id: "individual-tartaleta-tropical",
     categoryKey: "individuales",
-    name: "Mini Tarta de Limón",
-    description: "Fresca, cítrica, con merengue tostado.",
-    price: 3.75,
-    priceType: "fixed",
-    emoji: "🍋",
+    name: "Tartaleta Tropical",
+    description: "Base crocante con crema, kiwi, mango y fresa.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🥝",
+    imageUrl: "/products/tartaleta-tropical.jpg",
   },
   {
-    id: "8",
+    id: "individual-tartaleta-durazno",
     categoryKey: "individuales",
-    name: "Copa de Tiramisú",
-    description: "Capas de café, mascarpone y cacao.",
-    price: 4.25,
-    priceType: "fixed",
-    emoji: "☕",
+    name: "Tartaleta de Durazno y Frutos Rojos",
+    description: "Crema suave, durazno, cereza, arándano y fresa sobre base artesanal.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🍑",
+    imageUrl: "/products/tartaleta-durazno.jpg",
+  },
+  {
+    id: "individual-cheesecake-caramelo",
+    categoryKey: "individuales",
+    name: "Rebanada de Cheesecake con Caramelo",
+    description: "Cheesecake cremoso bañado en caramelo y nuez tostada picada.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🥜",
+    imageUrl: "/products/cheesecake-caramelo-nuez.jpg",
+  },
+  {
+    id: "individual-flan-napolitano",
+    categoryKey: "individuales",
+    name: "Flan Napolitano",
+    description: "Flan clásico sobre base de chocolate, bañado en caramelo.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🍮",
+    imageUrl: "/products/flan-napolitano.jpg",
+  },
+  {
+    id: "individual-eclairs",
+    categoryKey: "individuales",
+    name: "Eclairs de Chocolate",
+    description: "Masa choux rellena, bañada en chocolate con detalle de oro comestible.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "✨",
+    imageUrl: "/products/eclairs-chocolate.jpg",
+  },
+
+  // --- Cupcakes ---
+  {
+    id: "cupcake-choco-fresa",
+    categoryKey: "cupcakes",
+    name: "Cupcake de Chocolate con Fresa",
+    description: "Cupcake de chocolate, frosting de vainilla, fresa fresca y toque de oro comestible.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🧁",
+    imageUrl: "/products/cupcake-chocofresa.jpg",
+  },
+
+  // --- Crepas ---
+  {
+    id: "crepa-red-velvet",
+    categoryKey: "crepas",
+    name: "Crepa Red Velvet",
+    description: "Crepa roja rellena, decorada con fresas y sprinkles. Ideal para fechas especiales.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "❤️",
+    imageUrl: "/products/crepa-red-velvet.jpg",
+  },
+  {
+    id: "crepa-malvaviscos",
+    categoryKey: "crepas",
+    name: "Crepa de Malvaviscos",
+    description: "Crepa dulce con chocolate, azúcar glass y mini malvaviscos de colores.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🍡",
+    imageUrl: "/products/crepa-malvaviscos.jpg",
+  },
+  {
+    id: "crepa-oreo-kitkat",
+    categoryKey: "crepas",
+    name: "Crepa Oreo & KitKat",
+    description: "Crepa rellena con oreo triturado, fresa y KitKat, bañada en chocolate.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🍪",
+    imageUrl: "/products/crepa-oreo-kitkat.jpg",
+  },
+
+  // --- Cajas de regalo ---
+  {
+    id: "caja-navidena-tartaletas",
+    categoryKey: "cajas",
+    name: "Caja Navideña de Mini Tartaletas",
+    description: "Set de mini tartaletas de fruta, empacadas con moño para regalo. Tamaño y cantidad a elegir.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🎄",
+    imageUrl: "/products/caja-navidena-tartaletas.jpg",
+  },
+  {
+    id: "caja-sorpresa-cumpleanos",
+    categoryKey: "cajas",
+    name: "Caja Sorpresa de Cumpleaños",
+    description: "Caja personalizada con postres, detalles y tarjeta — perfecta para regalo. Se cotiza según contenido.",
+    price: 0,
+    priceType: "tbd",
+    emoji: "🎁",
+    imageUrl: "/products/caja-sorpresa-cumpleanos.jpg",
   },
 ];
 

@@ -34,7 +34,7 @@ function getCartLines(cart: CartState, products: Product[]): CartLine[] {
     .filter((line): line is CartLine => line !== null);
 }
 
-/** Arma el mensaje de pedido, separando productos de precio fijo de los que van "a cotizar". */
+/** Arma el mensaje de pedido, separando precio fijo / "desde" / "a confirmar". */
 export function buildOrderMessage(cart: CartState, products: Product[]): string {
   const lines = getCartLines(cart, products);
 
@@ -47,7 +47,10 @@ export function buildOrderMessage(cart: CartState, products: Product[]): string 
   let hasVariablePricing = false;
 
   for (const { product, quantity } of lines) {
-    if (product.priceType === "from") {
+    if (product.priceType === "tbd") {
+      hasVariablePricing = true;
+      messageLines.push(`• ${quantity}x ${product.name} — precio a confirmar`);
+    } else if (product.priceType === "from") {
       hasVariablePricing = true;
       messageLines.push(
         `• ${quantity}x ${product.name} — a cotizar (desde $${product.price.toFixed(2)})`
@@ -62,7 +65,7 @@ export function buildOrderMessage(cart: CartState, products: Product[]): string 
   messageLines.push("");
   messageLines.push(
     hasVariablePricing
-      ? `Subtotal (precio fijo): $${fixedTotal.toFixed(2)} + productos a cotizar`
+      ? `Subtotal (precio fijo): $${fixedTotal.toFixed(2)} + productos a confirmar`
       : `Total: $${fixedTotal.toFixed(2)}`
   );
   messageLines.push("");
@@ -75,14 +78,14 @@ export function orderUrl(cart: CartState, products: Product[]): string {
   return buildWhatsappUrl(buildOrderMessage(cart, products));
 }
 
-/** Totales del carrito para mostrar en la UI (separa precio fijo de variable). */
+/** Totales del carrito para mostrar en la UI (separa precio fijo de variable/por confirmar). */
 export function getCartSummary(cart: CartState, products: Product[]) {
   const lines = getCartLines(cart, products);
   const totalItems = lines.reduce((sum, l) => sum + l.quantity, 0);
   const fixedTotal = lines
     .filter((l) => l.product.priceType === "fixed")
     .reduce((sum, l) => sum + l.product.price * l.quantity, 0);
-  const hasVariablePricing = lines.some((l) => l.product.priceType === "from");
+  const hasVariablePricing = lines.some((l) => l.product.priceType !== "fixed");
 
   return { totalItems, fixedTotal, hasVariablePricing };
 }

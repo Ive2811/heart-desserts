@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Product } from "@/lib/types";
 
 interface ProductCardProps {
@@ -9,18 +10,26 @@ interface ProductCardProps {
   onDecrement: (productId: string) => void;
 }
 
-export function ProductCard({ product, quantity, onIncrement, onDecrement }: ProductCardProps) {
-  const priceLabel =
-    product.priceType === "from" ? `Desde $${product.price.toFixed(2)}` : `$${product.price.toFixed(2)}`;
+function priceLabel(product: Product): string {
+  if (product.priceType === "tbd") return "Precio a confirmar";
+  if (product.priceType === "from") return `Desde $${product.price.toFixed(2)}`;
+  return `$${product.price.toFixed(2)}`;
+}
 
+export function ProductCard({ product, quantity, onIncrement, onDecrement }: ProductCardProps) {
   const inOrder = quantity > 0;
 
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-heart-wine/15 bg-heart-cream-card shadow-[0_8px_30px_rgba(62,27,38,0.08)] transition-transform hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(62,27,38,0.14)]">
-      <div className="flex h-[150px] items-center justify-center bg-gradient-to-br from-heart-gold-cream to-heart-pink-soft text-5xl">
+      <div className="relative flex h-[150px] items-center justify-center overflow-hidden bg-gradient-to-br from-heart-gold-cream to-heart-pink-soft text-5xl">
         {product.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={product.imageUrl} alt={product.name} className="h-full w-full object-cover" />
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 50vw, 240px"
+            className="object-cover"
+          />
         ) : (
           <span aria-hidden="true">{product.emoji}</span>
         )}
@@ -35,8 +44,12 @@ export function ProductCard({ product, quantity, onIncrement, onDecrement }: Pro
         </p>
 
         <div className="mt-auto flex items-center justify-between pt-2">
-          <span className="font-[family-name:var(--font-display)] text-xl font-bold text-heart-berry-dark">
-            {priceLabel}
+          <span
+            className={`font-[family-name:var(--font-display)] font-bold text-heart-berry-dark ${
+              product.priceType === "tbd" ? "text-[0.95rem]" : "text-xl"
+            }`}
+          >
+            {priceLabel(product)}
           </span>
 
           <div className="flex items-center gap-2.5 rounded-full border border-heart-wine/15 px-1.5 py-1">

@@ -1,4 +1,4 @@
-export type PriceType = "fixed" | "from";
+export type PriceType = "fixed" | "from" | "tbd";
 
 export interface Product {
   id: string;
