@@ -5,15 +5,11 @@ const infoCards = [
     body: (
       <ul className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
         <li className="flex justify-between py-0.5">
-          <span>Lun – Vie</span>
-          <span>9:00 am – 6:00 pm</span>
+          <span>Miércoles – Domingo</span>
+          <span>1:00 pm – 7:00 pm</span>
         </li>
         <li className="flex justify-between py-0.5">
-          <span>Sábado</span>
-          <span>9:00 am – 3:00 pm</span>
-        </li>
-        <li className="flex justify-between py-0.5">
-          <span>Domingo</span>
+          <span>Lunes – Martes</span>
           <span>Cerrado</span>
         </li>
       </ul>
@@ -44,7 +40,7 @@ const infoCards = [
 
 export function InfoSection() {
   return (
-    <section className="mx-auto max-w-5xl px-5 pt-16 pb-5">
+    <section id="info" className="mx-auto max-w-5xl px-5 pt-16 pb-5">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[18px]">
         {infoCards.map((card) => (
           <div

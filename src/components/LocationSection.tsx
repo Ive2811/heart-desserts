@@ -5,7 +5,7 @@ export function LocationSection() {
   const appUrl = mapsAppUrl(BUSINESS_ADDRESS);
 
   return (
-    <section className="mx-auto max-w-5xl px-5 pt-16">
+    <section id="ubicacion" className="mx-auto max-w-5xl px-5 pt-16">
       <div className="mb-7 text-center">
         <p className="text-[0.72rem] font-medium tracking-[0.28em] text-heart-wine-soft uppercase">
           Ubicación

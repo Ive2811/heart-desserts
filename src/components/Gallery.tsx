@@ -1,7 +1,6 @@
 import Image from "next/image";
+import { products } from "@/data/catalog";
 import { getInstagramMedia } from "@/lib/instagram";
-
-const PLACEHOLDER_EMOJIS = ["🍓", "🎂", "🧁", "🍰", "🍋", "☕", "🍫", "🍓"];
 
 interface GalleryProps {
   instagramUrl: string;
@@ -11,8 +10,17 @@ export async function Gallery({ instagramUrl }: GalleryProps) {
   const media = await getInstagramMedia(8);
   const hasLiveFeed = media.length > 0;
 
+  // Respaldo mientras no hay token de Instagram configurado: reutiliza las
+  // fotos reales del catálogo en vez de emojis genéricos. En cuanto se
+  // configure INSTAGRAM_ACCESS_TOKEN (ver README), esto se reemplaza solo
+  // por el feed real, sin tocar este componente.
+  const fallbackPhotos = products
+    .filter((product) => product.imageUrl)
+    .slice(0, 8)
+    .map((product) => ({ src: product.imageUrl as string, alt: product.name }));
+
   return (
-    <section className="mx-auto max-w-5xl px-5 pt-16">
+    <section id="galeria" className="mx-auto max-w-5xl px-5 pt-16">
       <div className="mb-7 text-center">
         <p className="text-[0.72rem] font-medium tracking-[0.28em] text-heart-wine-soft uppercase">
           Galería
@@ -41,12 +49,18 @@ export async function Gallery({ instagramUrl }: GalleryProps) {
                 />
               </a>
             ))
-          : PLACEHOLDER_EMOJIS.map((emoji, index) => (
+          : fallbackPhotos.map((photo) => (
               <div
-                key={index}
-                className="flex aspect-square items-center justify-center rounded-2xl bg-gradient-to-br from-heart-gold-cream to-heart-pink-blush text-4xl text-heart-wine"
+                key={photo.src}
+                className="relative aspect-square overflow-hidden rounded-2xl bg-heart-gold-cream"
               >
-                {emoji}
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="150px"
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
               </div>
             ))}
       </div>
