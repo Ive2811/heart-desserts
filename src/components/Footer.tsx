@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/navLinks";
 
 interface FooterProps {
@@ -11,9 +12,12 @@ export function Footer({ instagramHandle, instagramUrl, facebookUrl }: FooterPro
     <footer className="mt-16 border-t border-heart-wine/10 bg-heart-pink-soft/40 px-5 pt-12 pb-8 text-heart-wine-soft">
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-9 text-center sm:grid-cols-3 sm:text-left">
         <div>
-          <p className="font-[family-name:var(--font-display)] text-2xl text-heart-wine">
-            Heart Desserts
-          </p>
+          <div className="flex items-center justify-center gap-2.5 sm:justify-start">
+            <Image src="/logo.png" alt="Heart Desserts" width={44} height={44} className="rounded-full" />
+            <p className="font-[family-name:var(--font-display)] text-2xl text-heart-wine">
+              Heart Desserts
+            </p>
+          </div>
           <p className="mt-2 text-[0.85rem] leading-relaxed">
             Postres artesanales hechos con cariño en El Salvador.
           </p>

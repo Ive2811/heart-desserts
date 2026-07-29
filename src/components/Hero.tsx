@@ -24,7 +24,7 @@ export function Hero() {
       </p>
 
       <svg
-        className="animate-hero-float mx-auto mt-8 block h-11 w-56"
+        className="animate-hero-float mx-auto mt-8 block h-11 w-56 text-heart-wine"
         style={{ animationDelay: "360ms, 1160ms" }}
         viewBox="0 0 220 46"
         fill="none"
@@ -33,7 +33,7 @@ export function Hero() {
       >
         <path
           d="M10 6 C 22 -2, 34 -2, 34 8 C 34 18, 20 20, 14 12 C 8 4, 20 -4, 32 4 C 60 22, 130 30, 200 14"
-          stroke="#3E1B26"
+          stroke="currentColor"
           strokeWidth="1.3"
           fill="none"
           strokeLinecap="round"

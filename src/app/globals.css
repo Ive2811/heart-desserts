@@ -36,6 +36,26 @@ body {
   background: var(--heart-bg-cream);
   color: var(--heart-wine);
   font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/*
+ * Modo oscuro: se reasignan las MISMAS variables (no hay tokens nuevos),
+ * así que cada componente que ya usa bg-heart-wine, text-heart-wine-soft,
+ * etc. se adapta solo, sin tocar ningún componente. Los pares que siempre
+ * se usan juntos (ej. bg-heart-wine + text-heart-bg-cream en los botones
+ * sólidos) se invierten como pareja, así que el contraste se mantiene.
+ */
+.dark {
+  --heart-bg-cream: #1c1216;
+  --heart-pink-blush: #3a232c;
+  --heart-pink-soft: #2a1b21;
+  --heart-wine: #f3e6ea;
+  --heart-wine-soft: #c9a4af;
+  --heart-berry: #e17b93;
+  --heart-berry-dark: #f0a7b9;
+  --heart-gold-cream: #3a2e22;
+  --heart-cream-card: #2a1a20;
 }
 
 html {

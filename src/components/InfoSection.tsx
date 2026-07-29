@@ -21,8 +21,9 @@ const infoCards = [
     body: (
       <p className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
         Hacemos envíos dentro de San Miguel el mismo día si el pedido se hace
-        antes de las 11:00 am. Para otras zonas o pedidos grandes, coordinamos
-        por WhatsApp.
+        con al menos 2 horas de anticipación dentro de nuestro horario de
+        atención. Para otras zonas o pedidos grandes, coordinamos por
+        WhatsApp.
       </p>
     ),
   },
