@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next"
+import { SITE_URL } from "@/lib/siteConfig";
+import { getBusinessJsonLd } from "@/lib/structuredData";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +19,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Heart Desserts | Repostería",
   description:
     "Postres artesanales hechos con cariño en El Salvador. Explora el catálogo y haz tu pedido directo por WhatsApp.",
@@ -39,15 +42,21 @@ const THEME_INIT_SCRIPT = `
 
 export default function RootLayout({
   children,
+  
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${cormorant.variable} ${jost.variable} antialiased`}>
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(getBusinessJsonLd()) }}
+/>
         {/* Se ejecuta antes de pintar para evitar el parpadeo claro→oscuro al cargar */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         {children}
+        <Analytics />
       </body>
     </html>
   );
