@@ -4,7 +4,7 @@
  * Mientras tanto usa un valor de ejemplo (San Miguel, El Salvador).
  */
 export const BUSINESS_ADDRESS =
-  process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? "San Miguel, El Salvador";
+  process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ?? "Heart Desserts, San Miguel, El Salvador";
 
 /** URL de vista previa embebida (no necesita API key de Google). */
 export function mapsEmbedUrl(address: string): string {

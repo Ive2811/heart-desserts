@@ -15,28 +15,6 @@ const infoCards = [
       </ul>
     ),
   },
-  {
-    icon: "🚚",
-    title: "Entregas",
-    body: (
-      <p className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
-        Hacemos envíos dentro de San Miguel el mismo día si el pedido se hace
-        con al menos 2 horas de anticipación dentro de nuestro horario de
-        atención. Para otras zonas o pedidos grandes, coordinamos por
-        WhatsApp.
-      </p>
-    ),
-  },
-  {
-    icon: "⏳",
-    title: "Tiempo de anticipación",
-    body: (
-      <p className="text-[0.85rem] leading-relaxed text-heart-wine-soft">
-        Postres individuales y cupcakes: mismo día. Tortas personalizadas:
-        mínimo 48 horas de anticipación.
-      </p>
-    ),
-  },
 ];
 
 export function InfoSection() {

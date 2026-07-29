@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { NAV_LINKS } from "@/lib/navLinks";
 
 interface FooterProps {
@@ -12,12 +11,9 @@ export function Footer({ instagramHandle, instagramUrl, facebookUrl }: FooterPro
     <footer className="mt-16 border-t border-heart-wine/10 bg-heart-pink-soft/40 px-5 pt-12 pb-8 text-heart-wine-soft">
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-9 text-center sm:grid-cols-3 sm:text-left">
         <div>
-          <div className="flex items-center justify-center gap-2.5 sm:justify-start">
-            <Image src="/logo.png" alt="Heart Desserts" width={44} height={44} className="rounded-full" />
-            <p className="font-[family-name:var(--font-display)] text-2xl text-heart-wine">
-              Heart Desserts
-            </p>
-          </div>
+          <p className="font-[family-name:var(--font-display)] text-2xl text-heart-wine">
+            Heart Desserts
+          </p>
           <p className="mt-2 text-[0.85rem] leading-relaxed">
             Postres artesanales hechos con cariño en El Salvador.
           </p>
@@ -48,22 +44,51 @@ export function Footer({ instagramHandle, instagramUrl, facebookUrl }: FooterPro
           <p className="mt-4 mb-2 text-[0.72rem] font-medium tracking-[0.2em] text-heart-wine uppercase">
             Síguenos
           </p>
-          <div className="flex justify-center gap-4 sm:justify-start">
+          {/* Cambié a flex-col o flex-row dependiendo del diseño deseado. Usando flex-col se apilan ordenadamente. */}
+          <div className="flex flex-col items-center gap-3 sm:items-start">
             <a
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[0.85rem] text-heart-wine hover:text-heart-berry"
+              className="flex items-center gap-2 text-[0.85rem] text-heart-wine transition-colors hover:text-heart-berry"
             >
-              📷 {instagramHandle}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+              {instagramHandle}
             </a>
             <a
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[0.85rem] text-heart-wine hover:text-heart-berry"
+              className="flex items-center gap-2 text-[0.85rem] text-heart-wine transition-colors hover:text-heart-berry"
             >
-              📘 Facebook
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+              @heart_desserts
             </a>
           </div>
         </div>

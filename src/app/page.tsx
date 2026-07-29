@@ -11,7 +11,7 @@ import { categories, products } from "@/data/catalog";
 
 const INSTAGRAM_HANDLE = "@heart.desserts_sv";
 const INSTAGRAM_URL = "https://instagram.com/heart.desserts_sv";
-const FACEBOOK_URL = "https://facebook.com/heartdessertssv";
+const FACEBOOK_URL = "https://www.facebook.com/heart.desserts.2023";
 
 export default function HomePage() {
   return (
