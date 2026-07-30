@@ -47,7 +47,7 @@ export function ProductCatalog({
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
         {visibleProducts.map((product, index) => (
-          <FadeIn key={product.id} delayMs={(index % 4) * 80}>
+          <FadeIn key={product.id} delayMs={(index % 4) * 80} className="h-full">
             <ProductCard
               product={product}
               quantity={cart[product.id] ?? 0}

@@ -1,4 +1,4 @@
-export type PriceType = "fixed" | "from" | "tbd";
+export type PriceType = "fixed" | "from" | "tbd" | "range";
 
 export interface Product {
   id: string;
@@ -6,6 +6,9 @@ export interface Product {
   name: string;
   description: string;
   price: number;
+  priceMax?: number;
+  priceMinLabel?: string;
+  priceMaxLabel?: string;
   priceType: PriceType;
   emoji: string;
   imageUrl?: string | null;

@@ -13,6 +13,9 @@ interface ProductCardProps {
 function priceLabel(product: Product): string {
   if (product.priceType === "tbd") return "Precio a confirmar";
   if (product.priceType === "from") return `Desde $${product.price.toFixed(2)}`;
+  if (product.priceType === "range" && product.priceMax != null) {
+    return `$${product.price.toFixed(2)} - $${product.priceMax.toFixed(2)}`;
+  }
   return `$${product.price.toFixed(2)}`;
 }
 
@@ -20,8 +23,8 @@ export function ProductCard({ product, quantity, onIncrement, onDecrement }: Pro
   const inOrder = quantity > 0;
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-heart-wine/15 bg-heart-cream-card shadow-[0_8px_30px_rgba(62,27,38,0.08)] transition-transform hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(62,27,38,0.14)]">
-      <div className="relative flex h-[150px] items-center justify-center overflow-hidden bg-gradient-to-br from-heart-gold-cream to-heart-pink-soft text-5xl">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-heart-wine/15 bg-heart-cream-card shadow-[0_8px_30px_rgba(62,27,38,0.08)] transition-transform hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(62,27,38,0.14)]">
+      <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-gradient-to-br from-heart-gold-cream to-heart-pink-soft text-5xl">
         {product.imageUrl ? (
           <Image
             src={product.imageUrl}
@@ -39,14 +42,16 @@ export function ProductCard({ product, quantity, onIncrement, onDecrement }: Pro
         <h3 className="font-[family-name:var(--font-display)] text-2xl leading-tight text-heart-wine">
           {product.name}
         </h3>
-        <p className="min-h-9 text-[0.82rem] leading-snug text-heart-wine-soft">
+        <p className="line-clamp-2 h-9 text-[0.82rem] leading-snug text-heart-wine-soft">
           {product.description}
         </p>
 
         <div className="mt-auto flex items-center justify-between pt-2">
           <span
             className={`font-[family-name:var(--font-display)] font-bold text-heart-berry-dark ${
-              product.priceType === "tbd" ? "text-[0.95rem]" : "text-xl"
+              product.priceType === "tbd" || product.priceType === "range"
+  ? "text-[0.95rem]"
+  : "text-xl"
             }`}
           >
             {priceLabel(product)}

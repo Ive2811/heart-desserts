@@ -50,10 +50,16 @@ export function buildOrderMessage(cart: CartState, products: Product[]): string 
     if (product.priceType === "tbd") {
       hasVariablePricing = true;
       messageLines.push(`• ${quantity}x ${product.name} — precio a confirmar`);
-    } else if (product.priceType === "from") {
+} else if (product.priceType === "range" && product.priceMax != null) {
       hasVariablePricing = true;
+      const minPart = product.priceMinLabel
+        ? `${product.priceMinLabel} $${product.price.toFixed(2)}`
+        : `$${product.price.toFixed(2)}`;
+      const maxPart = product.priceMaxLabel
+        ? `${product.priceMaxLabel} $${product.priceMax.toFixed(2)}`
+        : `$${product.priceMax.toFixed(2)}`;
       messageLines.push(
-        `• ${quantity}x ${product.name} — a cotizar (desde $${product.price.toFixed(2)})`
+        `• ${quantity}x ${product.name} — a confirmar (${minPart} / ${maxPart})`
       );
     } else {
       const subtotal = product.price * quantity;
