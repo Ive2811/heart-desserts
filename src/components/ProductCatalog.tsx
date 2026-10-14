@@ -10,8 +10,8 @@ interface ProductCatalogProps {
   products: Product[];
   categories: Category[];
   cart: CartState;
-  onIncrement: (productId: string) => void;
-  onDecrement: (productId: string) => void;
+  onIncrement: (key: string) => void;
+  onDecrement: (key: string) => void;
 }
 
 export function ProductCatalog({
@@ -50,7 +50,7 @@ export function ProductCatalog({
           <FadeIn key={product.id} delayMs={(index % 4) * 80} className="h-full">
             <ProductCard
               product={product}
-              quantity={cart[product.id] ?? 0}
+              cart={cart}
               onIncrement={onIncrement}
               onDecrement={onDecrement}
             />

@@ -12,6 +12,8 @@ export interface Product {
   priceType: PriceType;
   emoji: string;
   imageUrl?: string | null;
+  /** Sabores/opciones a elegir. Si existe, el cliente debe escoger una antes de agregar. */
+  options?: string[];
 }
 
 export interface Category {

@@ -1,4 +1,5 @@
 import type { CartState, Product } from "@/lib/types";
+import { parseCartKey } from "@/lib/cart";
 
 /**
  * Número de WhatsApp del negocio, en formato internacional sin signos
@@ -21,15 +22,17 @@ export function generalInquiryUrl(): string {
 interface CartLine {
   product: Product;
   quantity: number;
+  option?: string;
 }
 
 function getCartLines(cart: CartState, products: Product[]): CartLine[] {
   return Object.entries(cart)
     .filter(([, quantity]) => quantity > 0)
-    .map(([productId, quantity]) => {
+    .map(([key, quantity]): CartLine | null => {
+      const { productId, option } = parseCartKey(key);
       const product = products.find((p) => p.id === productId);
       if (!product) return null;
-      return { product, quantity };
+      return { product, quantity, option };
     })
     .filter((line): line is CartLine => line !== null);
 }
@@ -46,10 +49,11 @@ export function buildOrderMessage(cart: CartState, products: Product[]): string 
   let fixedTotal = 0;
   let hasVariablePricing = false;
 
-  for (const { product, quantity } of lines) {
+  for (const { product, quantity, option } of lines) {
+    const label = option ? `${product.name} (${option})` : product.name;
     if (product.priceType === "tbd") {
       hasVariablePricing = true;
-      messageLines.push(`• ${quantity}x ${product.name} — precio a confirmar`);
+      messageLines.push(`• ${quantity}x ${label} — precio a confirmar`);
 } else if (product.priceType === "range" && product.priceMax != null) {
       hasVariablePricing = true;
       const minPart = product.priceMinLabel
@@ -59,12 +63,12 @@ export function buildOrderMessage(cart: CartState, products: Product[]): string 
         ? `${product.priceMaxLabel} $${product.priceMax.toFixed(2)}`
         : `$${product.priceMax.toFixed(2)}`;
       messageLines.push(
-        `• ${quantity}x ${product.name} — a confirmar (${minPart} / ${maxPart})`
+        `• ${quantity}x ${label} — a confirmar (${minPart} / ${maxPart})`
       );
     } else {
       const subtotal = product.price * quantity;
       fixedTotal += subtotal;
-      messageLines.push(`• ${quantity}x ${product.name} — $${subtotal.toFixed(2)}`);
+      messageLines.push(`• ${quantity}x ${label} — $${subtotal.toFixed(2)}`);
     }
   }
 
