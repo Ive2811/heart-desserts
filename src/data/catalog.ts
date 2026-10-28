@@ -49,7 +49,7 @@ export const products: Product[] = [
     categoryKey: "postres",
     name: "Relámpagos de crema pastelera",
     description: "Rellenos de crema pastelera, bañados en chocolate.",
-    price: 1.0,
+    price: 1.25,
     priceType: "fixed",
     emoji: "🍫",
     imageUrl: "/products/eclairs-crema-pastelera.jpg",
@@ -62,6 +62,17 @@ export const products: Product[] = [
     price: 1.0,
     priceType: "fixed",
     emoji: "🍓",
+    imageUrl: "/products/relampagos-fresa.jpg",
+  },
+  {
+    id: "postre-paris-brest",
+    categoryKey: "postres",
+    name: "Paris Brest",
+    description: "Aro de masa choux relleno de crema.",
+    price: 3.0,
+    priceType: "fixed",
+    emoji: "🥐",
+    imageUrl: "/products/paris-brest.jpg",
   },
   {
     id: "postre-chocoflan",
@@ -91,6 +102,7 @@ export const products: Product[] = [
     price: 2.5,
     priceType: "fixed",
     emoji: "🥕",
+    imageUrl: "/products/pastel-zanahoria.jpg",
   },
   {
     id: "postre-pastel-chocolate",
@@ -100,6 +112,7 @@ export const products: Product[] = [
     price: 2.5,
     priceType: "fixed",
     emoji: "🍫",
+    imageUrl: "/products/pastel-chocolate.jpg",
   },
   {
     id: "postre-donas",
@@ -157,6 +170,7 @@ export const products: Product[] = [
     price: 2.5,
     priceType: "fixed",
     emoji: "🍮",
+    imageUrl: "/products/pannacota-maracuya.jpg",
   },
   {
     id: "postre-fresas-con-crema",
@@ -236,11 +250,12 @@ export const products: Product[] = [
   {
     id: "cheesecake-pistachio",
     categoryKey: "cheesecakes",
-    name: "Cheesecake de pistachio",
-    description: "Suave, con el sabor delicado y particular del pistachio.",
+    name: "Cheesecake de pistacho",
+    description: "Suave, con el sabor delicado y particular del pistacho.",
     price: 3.0,
     priceType: "fixed",
     emoji: "🍰",
+    imageUrl: "/products/cheesecake-pistacho.jpg",
   },
   {
     id: "cheesecake-fresa-premium",
@@ -250,6 +265,7 @@ export const products: Product[] = [
     price: 3.0,
     priceType: "fixed",
     emoji: "🍓",
+    imageUrl: "/products/cheesecake-fresa-premium.jpg",
   },
   {
     id: "cheesecake-maracuya",
@@ -289,6 +305,7 @@ export const products: Product[] = [
     price: 2.75,
     priceType: "fixed",
     emoji: "🥐",
+    imageUrl: "/products/croissant-jamon-queso.jpg",
   },
   {
     id: "croissant-banano-nutella",
