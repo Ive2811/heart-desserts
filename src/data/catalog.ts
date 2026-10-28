@@ -122,6 +122,7 @@ export const products: Product[] = [
     price: 1.0,
     priceType: "fixed",
     emoji: "🍩",
+    imageUrl: "/products/donas.jpg",
   },
   {
     id: "postre-pie-manzana",
@@ -131,6 +132,7 @@ export const products: Product[] = [
     price: 2.5,
     priceType: "fixed",
     emoji: "🥧",
+    imageUrl: "/products/pie-manzana.jpg",
   },
   {
     id: "postre-cupcakes",
@@ -275,6 +277,7 @@ export const products: Product[] = [
     price: 2.5,
     priceType: "fixed",
     emoji: "🍰",
+    imageUrl: "/products/cheesecake-maracuya.jpg",
   },
   {
     id: "cheesecake-chocolate",
@@ -284,6 +287,7 @@ export const products: Product[] = [
     price: 2.75,
     priceType: "fixed",
     emoji: "🍫",
+    imageUrl: "/products/cheesecake-chocolate.jpg",
   },
 
   // --- Croissants ---
@@ -315,6 +319,7 @@ export const products: Product[] = [
     price: 3.0,
     priceType: "fixed",
     emoji: "🥐",
+    imageUrl: "/products/croissant-nutella-banano.jpg",
   },
   {
     id: "croissant-simple",
@@ -324,6 +329,7 @@ export const products: Product[] = [
     price: 3.0,
     priceType: "fixed",
     emoji: "🥐",
+    imageUrl: "/products/croissant-simple.jpg",
   },
 
   // --- Crepas dulces ---
@@ -379,6 +385,7 @@ export const products: Product[] = [
     priceType: "fixed",
     options: ["Taro", "Chicle", "Pistacho", "Melón verde", "Chocolate"],
     emoji: "🧋",
+    imageUrl: "/products/frappe-especial.jpg",
   },
   {
     id: "bebida-licuado",
@@ -389,6 +396,7 @@ export const products: Product[] = [
     priceType: "fixed",
     options: ["Banano", "Fresa", "Café", "Oreo"],
     emoji: "🥛",
+    imageUrl: "/products/licuado.jpg",
   },
   {
     id: "bebida-iced",
@@ -399,6 +407,7 @@ export const products: Product[] = [
     priceType: "fixed",
     options: ["Taro", "Chicle", "Café", "Melón verde"],
     emoji: "🧊",
+    imageUrl: "/products/iced.jpg",
   },
 
   // --- Bebidas calientes ---
@@ -410,6 +419,7 @@ export const products: Product[] = [
     price: 0.75,
     priceType: "fixed",
     emoji: "☕",
+    imageUrl: "/products/cafe-tradicional.jpg",
   },
   {
     id: "bebida-cafe-caramelo",
@@ -419,6 +429,7 @@ export const products: Product[] = [
     price: 1.0,
     priceType: "fixed",
     emoji: "☕",
+    imageUrl: "/products/cafe-caramelo.jpg",
   },
   {
     id: "bebida-chocolate-caliente",
@@ -428,6 +439,7 @@ export const products: Product[] = [
     price: 1.25,
     priceType: "fixed",
     emoji: "🍫",
+    imageUrl: "/products/chocolate-caliente.jpg",
   },
 
   // --- Especiales (a pedido, fuera de la lista de precios fija) ---
